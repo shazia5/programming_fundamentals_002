@@ -24,13 +24,32 @@ const catalogue = [
 
 function checkBook(title) {
   if (!title) throw new Error("Please provide a title");
-  // Your code here
+ let result = false;
+ for (let i = 0; i < catalogue.length; i++ )
+ {
+    const book = catalogue[i];
+    if (book.includes("Great")) {
+      return true;
+    }
+ }
 }
-
 function countBooksByKeyword(keyword) {
   if (!keyword) throw new Error("Please provide a keyword");
-  // Your code here
-}
+  let count = 0;
+    let i = 0;
+    while (i < catalogue.length) {
+     const book = catalogue[i];
+     let bookLS = book.toLowerCase();
+     let keywordLS = keyword.toLowerCase();
+         
+     if (bookLS.includes(keywordLS)) { count = count + 1;
+  }
+  i++;
+  
+  }
+  return count;
+  }
+
 
 function getBooksByAuthor(author) {
   if (!author) throw new Error("Please provide an author");
@@ -53,4 +72,4 @@ module.exports = {
   getBooksByAuthor,
   getStockCount,
   stockReview
-};
+}

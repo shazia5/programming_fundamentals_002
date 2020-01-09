@@ -17,5 +17,36 @@ describe("catalogueService", () => {
     test("returns false when not even a partial match is found", () => {
       expect(catalogueService.checkBook("The Wind")).toBe(false);
     });
+  
+    test("returns true when book is hardback", () => {
+      expect(catalogueService.checkBook("Great Expectations")).toBe(true);
+    });
+    test("returns true when book is second hand", () => {
+      expect(catalogueService.checkBook("Great Expectations")).toBe(true);
+    });
   });
+
+});
+describe("catalogueService.countBooksByKeyword", () => {
+  test("returns 3 when title contains assassin", () => {
+    expect(catalogueService.countBooksByKeyword("assassin")).toBe(3);
+  });
+
+  test("returns 2 when title contains normal", () => {
+    expect(catalogueService.countBooksByKeyword("normal")).toBe(2);
+  });
+
+  test("returns 0 when title does not contain pineapple", () => {
+    expect(catalogueService.countBooksByKeyword("pineapple")).toBe(0);
+  });
+
+  test("returns 4 when title does contains 6", () => {
+    expect(catalogueService.countBooksByKeyword("6")).toBe(4);
+  });
+
+});
+describe("catalogueService.getBooksByAuthor", () => {
+  test("return a list of books by a given author", () => {
+    expect(catalogueService.getBooksByAuthor("Charles Dickens")).toEqual(["A Tale of Two Cities", "Oliver Twist", "Great Expectations"]);
+  })
 });
